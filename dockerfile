@@ -1,5 +1,5 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2 AS runtime
-WORKDIR /app
-COPY published ./published
-WORKDIR /app/published
-ENTRYPOINT ["dotnet", "SampleApp.dll"]
+FROM oracle/instantclient:19
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2
+COPY /SampleApp/bin/Release/netcoreapp2.2 /publish
+WORKDIR /publish
+CMD ["dotnet", "SampleApp.dll"]
